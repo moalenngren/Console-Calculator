@@ -53,8 +53,6 @@ namespace Calculator
                     sum = sum + i;
                 }
             }
-
-
             return sum;
         }
     }

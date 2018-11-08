@@ -12,37 +12,36 @@ namespace Calculator
             do
             {
                 PrintMenu();
-
                 string input = Console.ReadLine();
                 switch (input)
                 {
                     case "1":
                         Console.Write("\nAdd two numbers! First number: ");
-                        calc.FirstNumber = double.Parse(Console.ReadLine());
+                        calc.FirstNumber = AssertInput();
                         Console.Write("Second number: ");
-                        calc.SecondNumber = double.Parse(Console.ReadLine());
+                        calc.SecondNumber = AssertInput();
                         double sum = calc.SumNumbers();
                         Console.WriteLine("\nThe sum of your numbers is: {0} \n", sum);
                         break;
                     case "2":
                         Console.Write("\nMultiply two numbers! First number: ");
-                        calc.FirstNumber = double.Parse(Console.ReadLine());
+                        calc.FirstNumber = AssertInput();
                         Console.Write("Second number: ");
-                        calc.SecondNumber = double.Parse(Console.ReadLine());
+                        calc.SecondNumber = AssertInput();
                         double product = calc.MultiplyNumbers();
                         Console.WriteLine("\nThe product of your numbers is: {0} \n", product);
                         break;
                     case "3":
                         Console.Write("\nGive two numbers to add all numbers in between. \nFirst number: ");
-                        calc.FirstNumber = double.Parse(Console.ReadLine());
+                        calc.FirstNumber = AssertInput();
                         Console.Write("Second number: ");
-                        calc.SecondNumber = double.Parse(Console.ReadLine());
+                        calc.SecondNumber = AssertInput();
                         double sumInBetween = calc.SumInBetween();
                         Console.WriteLine("\nThe sum of all numbers from {0} to {1} is {2} \n", calc.FirstNumber, calc.SecondNumber, sumInBetween);
                         break;
                     case "4":
                         Console.Write("\nWrite a number to add to memory: ");
-                        calc.NumberInMemory = calc.NumberInMemory + double.Parse(Console.ReadLine());
+                        calc.NumberInMemory = calc.NumberInMemory + AssertInput();
                         Console.WriteLine("\nNumber successfully added to memory! \n");
                         break;
                     case "5":
@@ -72,6 +71,38 @@ namespace Calculator
                               "5. Clear memory \n" +
                               "6. Print calculator contents \n" +
                               "7. Quit \n");
+        }
+
+        public static bool InputIsCorrect(string input)
+        {
+            try
+            {
+                double.Parse(input);
+            }
+            catch //(Exception e) 
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+        private static double AssertInput()
+        {
+            var input = "";
+            bool correct = false;
+            do
+            {
+                input = Console.ReadLine();
+                if (InputIsCorrect(input))
+                {
+                    correct = true;
+                    return double.Parse(input);
+                }
+                Console.Write("Input must be a number. Try again: ");
+            } while (!correct);
+
+            return double.Parse(input);
         }
     }
 }
