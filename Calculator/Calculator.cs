@@ -29,16 +29,14 @@ namespace Calculator
         {
             return FirstNumber * SecondNumber;
         }
-
+    
         public double SumInBetween()
         {
-            int sum = 0;
-            //TODO - Fix this loop
-            for (int i = 1; i < 5; i++)
+            double sum = 0;
+            for (double i = FirstNumber; i < (SecondNumber + 1); i++)
             {
-
+                sum = sum + i;
             }
-
                 return sum;
         }
     }

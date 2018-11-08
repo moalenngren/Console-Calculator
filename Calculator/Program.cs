@@ -25,7 +25,7 @@ namespace Calculator
                         Console.WriteLine("\nThe sum of your numbers is: {0} \n", sum);
                         break;
                     case "2":
-                        Console.Write("\nGive two numbers to multiply! First number: ");
+                        Console.Write("\nMultiply two numbers! First number: ");
                         calc.FirstNumber = double.Parse(Console.ReadLine());
                         Console.Write("Second number: ");
                         calc.SecondNumber = double.Parse(Console.ReadLine());
@@ -33,7 +33,12 @@ namespace Calculator
                         Console.WriteLine("\nThe product of your numbers is: {0} \n", product);
                         break;
                     case "3":
-                        Console.WriteLine("\nGive two numbers to add all numbers in between");
+                        Console.Write("\nGive two numbers to add all numbers in between. \nFirst number: ");
+                        calc.FirstNumber = double.Parse(Console.ReadLine());
+                        Console.Write("Second number: ");
+                        calc.SecondNumber = double.Parse(Console.ReadLine());
+                        double sumInBetween = calc.SumInBetween();
+                        Console.WriteLine("\nThe sum of all numbers from {0} to {1} is {2} \n", calc.FirstNumber, calc.SecondNumber, sumInBetween);
                         break;
                     case "4":
                         Console.Write("\nWrite a number to add to memory: ");
@@ -52,7 +57,7 @@ namespace Calculator
                         shouldRepeat = false;
                         break;
                     default:
-                        Console.WriteLine("Wrong input, try again");
+                        Console.Write("\nWrong input, try again!\n\n");
                         break;
                 }
             } while (shouldRepeat);
