@@ -15,9 +15,14 @@ namespace Calculator
         }
 
         override
-        public string ToString() 
+        public string ToString()
         {
-            return String.Format("First number: {0} \n Second number: {1} \n Number in memory: {2}", FirstNumber, SecondNumber, NumberInMemory);
+            return String.Format("First number: {0} \n " +
+                                 "Second number: {1} \n " +
+                                 "Number in memory: {2}",
+                                 FirstNumber,
+                                 SecondNumber,
+                                 NumberInMemory);
         }
 
         public double SumNumbers()
@@ -29,15 +34,28 @@ namespace Calculator
         {
             return FirstNumber * SecondNumber;
         }
-    
+
         public double SumInBetween()
         {
             double sum = 0;
-            for (double i = FirstNumber; i < (SecondNumber + 1); i++)
+
+            if (FirstNumber > SecondNumber)
             {
-                sum = sum + i;
+                for (double i = SecondNumber; i < (FirstNumber + 1); i++)
+                {
+                    sum = sum + i;
+                }
             }
-                return sum;
+            else
+            {
+                for (double i = FirstNumber; i < (SecondNumber + 1); i++)
+                {
+                    sum = sum + i;
+                }
+            }
+
+
+            return sum;
         }
     }
 }
