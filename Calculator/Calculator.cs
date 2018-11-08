@@ -17,9 +17,9 @@ namespace Calculator
         override
         public string ToString()
         {
-            return String.Format("First number: {0} \n " +
-                                 "Second number: {1} \n " +
-                                 "Number in memory: {2}",
+            return String.Format("First number: {0} \n" +
+                                 "Second number: {1} \n" +
+                                 "Number in memory: {2}\n\n",
                                  FirstNumber,
                                  SecondNumber,
                                  NumberInMemory);
